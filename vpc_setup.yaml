@@ -125,5 +125,5 @@
     
     - name: Store variables in file
       copy:
-        content: "{{ variables_output.results | map(attribute='msg') | join('\n') }}"
+        content: "{{ variables_output.results | map(attribute='item') | join('\n') }}"
         dest: /Ansible-for-aws/variables.txt

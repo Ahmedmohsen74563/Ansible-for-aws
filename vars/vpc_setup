@@ -17,7 +17,6 @@ region: "us-west-1"
 
 #Zone names
 us-west-1a
-	
 us-west-1c
 
 state: present

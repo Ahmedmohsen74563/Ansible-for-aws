@@ -76,7 +76,7 @@
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         tags:
-          Name: my-route-table
+          Name: pub-route-table
         subnets:
           - "{{ pub1_out.subnet.id }}"
           - "{{ pub2_out.subnet.id }}"
@@ -99,7 +99,7 @@
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         tags:
-          Name: my-route-table
+          Name: priv-route-table
         subnets:
           - "{{ priv1_out.subnet.id }}"
           - "{{ priv2_out.subnet.id }}"

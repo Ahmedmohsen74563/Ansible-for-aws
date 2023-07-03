@@ -26,5 +26,5 @@
         region: "{{ region }}"
         zone: "{{ zone1 }}"
         resource_tags:
-          Name: "{{ vp-pubsub1 }}"
+          Name:  vp-pubsub1
       register: pub1_out

@@ -61,4 +61,13 @@
         resource_tags:
           Name:  vp-privsub2
       register: priv2_out
-  
+
+    - name: Create an Internet Gateway
+      ec2_vpc_igw:
+        state: present
+        vpc_id: "{{ vpcout.vpc.id }}"
+        region: "{{ region }}"
+        tags:
+          Name: my-igw
+      register: igw_out
+      

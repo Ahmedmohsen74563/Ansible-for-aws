@@ -24,7 +24,7 @@
         vpc_id: "{{ vpcout.vpc.id }}"
         cidr: "{{ PubSub1Cidr }}"
         region: "{{ region }}"
-        zone: "{{ zone1 }}"
+        az: "{{ zone1 }}"
         resource_tags:
           Name:  vp-pubsub1
       register: pub1_out

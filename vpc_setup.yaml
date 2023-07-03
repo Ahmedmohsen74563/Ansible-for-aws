@@ -121,3 +121,9 @@
         - pub_rt_out.id
         - priv_rt_out.id
         - igw_out.gateway_id
+      register: variables_output
+    
+    - name: Store variables in file
+      copy:
+        content: "{{ variables_output.stdout_lines | join('\n') }}"
+        dest: /Ansible-for-aws/variables.txt

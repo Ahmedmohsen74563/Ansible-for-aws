@@ -1,0 +1,20 @@
+#Variables file for vpc setup
+vpc_name: "Ahmedmohsen-vpc"
+
+#VPC Range
+vpcCidr: '172.20.0.0/16'
+
+#Subnets Range
+PubSub1Cidr: 172.20.1.0/24
+PubSub2Cidr: 172.20.2.0/24
+
+PrivSub1Cidr: 172.20.4.0/24
+PrivSub2Cidr: 172.20.5.0/24
+
+
+#Region name 
+region: "us-west-1"
+
+#Zone names
+us-west-1a	
+us-west-1c

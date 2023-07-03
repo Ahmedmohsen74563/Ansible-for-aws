@@ -28,3 +28,37 @@
         resource_tags:
           Name:  vp-pubsub1
       register: pub1_out
+
+    - name: Create public subnets
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ PubSub2Cidr }}"
+        region: "{{ region }}"
+        az: "{{ zone2 }}"
+        resource_tags:
+          Name:  vp-pubsub2
+      register: pub2_out
+
+    - name: Create private subnets
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ PrivSub1Cidr }}"
+        region: "{{ region }}"
+        az: "{{ zone1 }}"
+        resource_tags:
+          Name:  vp-privsub1
+      register: priv1_out
+
+    - name: Create private subnets
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ PrivSub2Cidr }}"
+        region: "{{ region }}"
+        az: "{{ zone2 }}"
+        resource_tags:
+          Name:  vp-privsub2
+      register: priv2_out
+  

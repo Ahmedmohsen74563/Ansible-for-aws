@@ -16,7 +16,7 @@ PrivSub2Cidr: 172.20.5.0/24
 region: "us-west-1"
 
 #Zone names
-us-west-1a
-us-west-1c
+zone1: us-west-1a
+zone2: us-west-1c
 
 state: present

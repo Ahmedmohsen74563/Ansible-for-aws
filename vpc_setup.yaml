@@ -78,7 +78,7 @@
         region: "{{ region }}"
         tags:
           Name: my-route-table
-        subnet_ids:
+        subnets:
           - "{{ pub1_out.subnet.id }}"
           - "{{ pub2_out.subnet.id }}"
         routes:
@@ -101,7 +101,7 @@
         region: "{{ region }}"
         tags:
           Name: my-route-table
-        subnet_ids:
+        subnets:
           - "{{ priv1_out.subnet.id }}"
           - "{{ priv2_out.subnet.id }}"
         routes:

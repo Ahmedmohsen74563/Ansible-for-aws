@@ -5,7 +5,7 @@
   gather_facts: no
 
   vars_files:
-    - vars/vpc_setup.yml
+    - vars/vpc_setup
 
   tasks:
     - name: Create a new VPC

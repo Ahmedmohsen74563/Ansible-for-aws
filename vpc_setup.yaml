@@ -1,0 +1,19 @@
+---
+- name: Create a new VPC in AWS
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars_files:
+    - vars/vpc_setup
+
+  tasks:
+    - name: Create a new VPC
+      ec2_vpc_net:
+        state: "{{ state }}"
+        cidr_block: "{{ vpcCidr }}"
+        region: "{{ region }}"
+        resource_tags:
+          Name: "{{ vpc_name }}"
+      register: vpcout
+

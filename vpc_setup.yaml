@@ -5,7 +5,7 @@
   gather_facts: no
 
   vars_files:
-    - vars/vpc_setup
+    - vars/vpc_setup.yml
 
   tasks:
     - name: Create a new VPC
@@ -17,3 +17,14 @@
         resource_tags:
           Name: "{{ vpc_name }}"
       register: vpcout
+
+    - name: Create public subnets
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ PubSub1Cid }}"
+        region: "{{ region }}"
+        zone: "{{ zone1 }}"
+        resource_tags:
+          Name: "{{ vp-pubsub1 }}"
+      register: pub1_out

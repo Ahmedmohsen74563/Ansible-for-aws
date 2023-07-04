@@ -1,0 +1,8 @@
+vpcout.id
+pub1_out.subnet.id
+pub2_out.subnet.id
+priv1_out.subnet.id
+priv2_out.subnet.id
+nat_gw_out.nat_gateway_id
+pub_rt_out.id
+priv_rt_out.id

@@ -1,0 +1,55 @@
+- name: Create bastion host
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - vars/vpc_setup
+    - vars/vpc_variables
+    - vars/Bastion_setup
+
+  tasks:
+    - name: Save instance details to file
+      copy:
+        content: "{{ bastion_ec2.instances[0].public_ip }}\n{{ bastion_ec2.instances[0].id }}"
+        dest: bastion_details.txt
+    
+    - name: Create key pair and security group
+      ec2_key:
+        name: "{{ key_name }}"
+        region: "{{ region }}"
+      register: key_pair
+
+    - name: Save key pair to file
+      copy:
+        content: "{{ key_pair.key.private_key }}"
+        dest: bastion-keypair.pem
+        mode: 0400
+
+    - name: Create security group
+      ec2_group:
+        name: "{{ sg_name }}"
+        region: "{{ region }}"
+        rules:
+          - proto: tcp
+            from_port: "{{ sg_port }}"
+            to_port: "{{ sg_port }}"
+            cidr_ip: "{{ PubSub1Cidr }}"
+      register: security_group
+
+    - name: Save security group ID to file
+      copy:
+        content: "{{ security_group.group_id }}"
+        dest: bastion-sg.txt
+
+    - name: Launch bastion host
+      ec2:
+        region: "{{ region }}"
+        image: "{{ bastion_ami }}"
+        instance_type: "{{ instance_type }}"
+        key_name: "{{ key_name }}"
+        network:
+          subnet_id: "{{ pub1_out.subnet.id }}"
+        group_id: "{{ sg_name }}"
+        instance_tags:
+          Name: bastion_ec2
+      register: bastion_ec2

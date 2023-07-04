@@ -8,11 +8,6 @@
     - vars/Bastion_setup
 
   tasks:
-    - name: Save instance details to file
-      copy:
-        content: "{{ bastion_ec2.instances[0].public_ip }}\n{{ bastion_ec2.instances[0].id }}"
-        dest: bastion_details.txt
-    
     - name: Create key pair and security group
       ec2_key:
         name: "{{ key_name }}"
@@ -53,3 +48,7 @@
         instance_tags:
           Name: "{{ tag_name }}"
       register: bastion_ec2
+    - name: Save instance details to file
+      copy:
+        content: "{{ bastion_ec2.instances[0].public_ip }}\n{{ bastion_ec2.instances[0].id }}"
+        dest: bastion_details.txt

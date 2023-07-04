@@ -51,5 +51,5 @@
           subnet_id: "{{ pub1_out.subnet.id }}"
         group_id: "{{ sg_name }}"
         instance_tags:
-          Name: bastion_ec2
+          Name: "{{ tag_name }}"
       register: bastion_ec2

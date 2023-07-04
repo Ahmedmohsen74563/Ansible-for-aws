@@ -24,6 +24,7 @@
       ec2_group:
         name: "{{ sg_name }}"
         region: "{{ region }}"
+        description: "Security group for bastion host"
         rules:
           - proto: tcp
             from_port: "{{ sg_port }}"

@@ -19,6 +19,7 @@
         content: "{{ key_pair.key.private_key }}"
         dest: bastion-keypair.pem
         mode: 0400
+        if_exist_do_not_create: true 
 
     - name: Create security group
       ec2_group:
@@ -36,6 +37,7 @@
       copy:
         content: "{{ security_group.group_id }}"
         dest: bastion-sg.txt
+        if_exist_do_not_create: true 
 
     - name: Launch bastion host
       ec2:
@@ -53,3 +55,4 @@
       copy:
         content: "{{ bastion_ec2.instances[0].public_ip }}\n{{ bastion_ec2.instances[0].id }}"
         dest: bastion_details.txt
+        if_exist_do_not_create: true 

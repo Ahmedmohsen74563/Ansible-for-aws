@@ -12,7 +12,9 @@
       ec2_key:
         name: "{{ key_name }}"
         region: "{{ region }}"
+        if_exist_do_not_create: true
       register: key_pair
+      
 
     - name: Save key pair to file
       copy:
@@ -31,6 +33,7 @@
             from_port: "{{ sg_port }}"
             to_port: "{{ sg_port }}"
             cidr_ip: "{{ PubSub1Cidr }}"
+        if_exist_do_not_create: true
       register: security_group
 
     - name: Save security group ID to file
@@ -50,6 +53,7 @@
         group_id: "{{ sg_name }}"
         instance_tags:
           Name: "{{ tag_name }}"
+        if_exist_do_not_create: true
       register: bastion_ec2
     - name: Save instance details to file
       copy:

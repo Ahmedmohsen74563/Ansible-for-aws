@@ -121,4 +121,17 @@
         - pub_rt_out.id
         - priv_rt_out.id
         - igw_out.gateway_id
-      
+
+    - name: Store IDs in File
+      copy:
+        content: |
+          VPC ID: {{ vpcout.id }}
+          Public Subnet 1 ID: {{ public_subnets_out.results[0].subnet.id }}
+          Public Subnet 2 ID: {{ public_subnets_out.results[1].subnet.id }}
+          Private Subnet 1 ID: {{ private_subnets_out.results[0].subnet.id }}
+          Private Subnet 2 ID: {{ private_subnets_out.results[1].subnet.id }}
+          NAT Gateway ID: {{ nat_gw_out.nat_gateway_id }}
+          Public Route Table ID: {{ pub_rt_out.id }}
+          Private Route Table ID: {{ priv_rt_out.id }}
+          Internet Gateway ID: {{ igw_out.gateway_id }}
+        dest: vars/ids  

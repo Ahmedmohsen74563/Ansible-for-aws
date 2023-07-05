@@ -126,10 +126,10 @@
       copy:
         content: |
           VPC ID: {{ vpcout.id }}
-          Public Subnet 1 ID: {{ public_subnets_out.results[0].subnet_id }}
-          Public Subnet 2 ID: {{ public_subnets_out.results[1].subnet_id }}
-          Private Subnet 1 ID: {{ private_subnets_out.results[0].subnet_id }}
-          Private Subnet 2 ID: {{ private_subnets_out.results[1].subnet_id }}
+          Public Subnet 1 ID: {{ pub1_out.subnet.id }}
+          Public Subnet 2 ID: {{ pub2_out.subnet.id }}
+          Private Subnet 1 ID: {{ priv1_out.subnet.id }}
+          Private Subnet 2 ID: {{ priv2_out.subnet.id }}
           NAT Gateway ID: {{ nat_gw_out.nat_gateway_id }}
           Public Route Table ID: {{ pub_rt_out.route_table_id }}
           Private Route Table ID: {{ priv_rt_out.route_table_id }}

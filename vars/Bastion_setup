@@ -3,6 +3,7 @@ bastion_ami: ami-0e618811ec643488b
 region: us-west-1
 MYIP: 154.178.222.173/32
 instance_type: t2.micro
+tag_name: bastion_ec2 
 
 key_name: bastion-keypair # Replace with the name you want to give to the key pair
 sg_name: bastion-sg # Replace with the name you want to give to the security group

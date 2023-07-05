@@ -131,7 +131,7 @@
           Private Subnet 1 ID: {{ private_subnets_out.results[0].subnet.id }}
           Private Subnet 2 ID: {{ private_subnets_out.results[1].subnet.id }}
           NAT Gateway ID: {{ nat_gw_out.nat_gateway_id }}
-          Public Route Table ID: {{ pub_rt_out.id }}
-          Private Route Table ID: {{ priv_rt_out.id }}
-          Internet Gateway ID: {{ igw_out.gateway_id }}
-        dest: vars/ids  
+          Public Route Table ID: {{ pub_rt_out.route_table_id }}
+          Private Route Table ID: {{ priv_rt_out.route_table_id }}
+          Internet Gateway ID: {{ igw_out.internet_gateway_id }}
+        dest: vars/ids

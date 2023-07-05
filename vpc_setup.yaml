@@ -110,7 +110,7 @@
 
     - name: Debug variables
       debug:
-        var: item
+        var: "{{item}}"
       loop:
         - vpcout.id
         - pub1_out.subnet.id
@@ -121,9 +121,4 @@
         - pub_rt_out.id
         - priv_rt_out.id
         - igw_out.gateway_id
-      register: variables_output
-    
-    - name: Store variables in file
-      copy:
-        content: "{{ variables_output.results | map(attribute='item') | join('\n') }}"
-        dest: variables.txt
+      

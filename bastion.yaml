@@ -23,6 +23,7 @@
     - name: Create security group for instance
       ec2_group:
         name: "{{ sg_name }}"
+        description: "{{ sg_description }}"
         vpc_id: "{{ vpcout }}"
         region: "{{ region }}"
         rules:

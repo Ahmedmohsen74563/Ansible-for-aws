@@ -122,7 +122,7 @@
         - igw_out.gateway_id
 
     - set_fact:
-        vpcout: "{{ vpcout.vpc.id }}"
+        vpc_id: "{{ vpcout.vpc.id }}"
         pub1_out: "{{ pub1_out.subnet.id }}"
         pub2_out: "{{ pub2_out.subnet.id }}"
         priv1_out: "{{ priv1_out.subnet.id }}"
@@ -130,9 +130,9 @@
         nat_gw_out: "{{ nat_gw_out.nat_gateway_id }}"
         pub_rt_out: "{{ pub_rt_out.id }}"
         priv_rt_out: "{{ priv_rt_out.id }}"
-        igw_out: "{{ igw_out.gateway_id }}"
+        igw_out: "{{ igw_out.internet_gateway_id }}"
         cacheable: yes
- 
+    
     - name: Create variables file for vpc output
       copy:
         content: "vpcout: {{ vpcout.id }}\npub1_out: {{ pub1_out.subnet.id }}\npub2_out: {{ pub2_out.subnet.id }}\npriv1_out: {{ priv1_out.subnet.id }}\npriv2_out: {{ priv2_out.subnet.id }}\nnat_gw_out: {{ nat_gw_out.nat_gateway_id }}\npub_rt_out: {{ pub_rt_out.id }}\npriv_rt_out: {{ priv_rt_out.id }}\nigw_out: {{ igw_out.gateway_id }}"

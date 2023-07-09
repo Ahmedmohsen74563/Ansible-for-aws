@@ -123,15 +123,13 @@
         - igw_out.gateway_id
 
     - name: Store IDs in File
-      copy:
-        content: |
-          VPC ID: {{ vpcout.id }}
-          Public Subnet 1 ID: {{ public_subnets_out.results[0].id }}
-          Public Subnet 2 ID: {{ public_subnets_out.results[1].id }}
-          Private Subnet 1 ID: {{ private_subnets_out.results[0].id }}
-          Private Subnet 2 ID: {{ private_subnets_out.results[1].id }}
-          NAT Gateway ID: {{ nat_gw_out.nat_gateway_id }}
-          Public Route Table ID: {{ pub_rt_out.id }}
-          Private Route Table ID: {{ priv_rt_out.id }}
-          Internet Gateway ID: {{ igw_out.id }}
-        dest: /path/to/ids.txt
+      set_fact: 
+        vpcout: "{{ vpcout.id }}"
+        pub1_out: "{{ pub1_out.subnet.id }}"
+        pub2_out: "{{ pub2_out.subnet.id }}"
+        priv1_out: "{{ priv1_out.subnet.id }}"
+        priv2_out: "{{ priv2_out.subnet.id }}"
+        nat_gw_out:  "{{ nat_gw_out.nat_gateway_id }}"
+        pub_rt_out: "{{ pub_rt_out.id }}"
+        priv_rt_out: "{{ priv_rt_out.id }}"
+        igw_out: "{{ igw_out.gateway_id }}"

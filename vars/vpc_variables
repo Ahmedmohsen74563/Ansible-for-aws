@@ -1,8 +1,8 @@
-vpcout: vpcout.id
-pub1_out: pub1_out.subnet.id
-pub2_out: pub2_out.subnet.id
-priv1_out: priv1_out.subnet.id
-priv2_out: priv2_out.subnet.id
-nat_gw_out: nat_gw_out.nat_gateway_id
-pub_rt_out: pub_rt_out.id
-priv_rt_out: priv_rt_out.id
+vpcout: vpc-004b54006f8d042fa
+pub1_out: subnet-03e8d2b136251a100
+pub2_out: subnet-0a347e7fc9e929816
+priv1_out: subnet-0ce0b75db8737c3f3
+priv2_out: subnet-01893310fde547022
+nat_gw_out: nat-0f8f5160a044d2390
+pub_rt_out: rtb-07ea066cdcd098cc3
+priv_rt_out:  rtb-08e048e43abb9eaf9

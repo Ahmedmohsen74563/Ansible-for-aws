@@ -109,17 +109,17 @@
       register: priv_rt_out
 
     - debug:
-        var: item
+        var: "{{item}}"
       loop:
-        - vpcout
-        - pub1_out
-        - pub2_out
-        - priv1_out
-        - priv2_out
-        - nat_gw_out
-        - pub_rt_out
-        - priv_rt_out
-        - igw_out
+        - vpcout.id
+        - pub1_out.subnet.id
+        - pub2_out.subnet.id
+        - priv1_out.subnet.id
+        - priv2_out.subnet.id
+        - nat_gw_out.nat_gateway_id
+        - pub_rt_out.id
+        - priv_rt_out.id
+        - igw_out.gateway_id
 
     - set_fact:
         vpc_id: "{{ vpcout.vpc.id }}"

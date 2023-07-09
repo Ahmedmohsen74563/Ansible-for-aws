@@ -124,19 +124,19 @@
 
     - name: Set_facts
       set_fact: 
-        id_vpcout: "{{ vpcout.id }}"
-        id_pub1_out: "{{ pub1_out.subnet.id }}"
-        id_pub2_out: "{{ pub2_out.subnet.id }}"
-        id_priv1_out: "{{ priv1_out.subnet.id }}"
-        id_priv2_out: "{{ priv2_out.subnet.id }}"
-        id_nat_gw_out:  "{{ nat_gw_out.nat_gateway_id }}"
-        id_pub_rt_out: "{{ pub_rt_out.id }}"
-        id_priv_rt_out: "{{ priv_rt_out.id }}"
-        id_igw_out: "{{ igw_out.gateway_id }}"
+        vpcout: "{{ vpcout.id }}"
+        pub1_out: "{{ pub1_out.subnet.id }}"
+        pub2_out: "{{ pub2_out.subnet.id }}"
+        priv1_out: "{{ priv1_out.subnet.id }}"
+        priv2_out: "{{ priv2_out.subnet.id }}"
+        nat_gw_out:  "{{ nat_gw_out.nat_gateway_id }}"
+        pub_rt_out: "{{ pub_rt_out.id }}"
+        priv_rt_out: "{{ priv_rt_out.id }}"
+        igw_out: "{{ igw_out.gateway_id }}"
         cacheable: yes
 
     - name: Store IDs in File
       copy:
-        content: "{{ id_vpcout }}\n{{ id_pub1_out }}\n{{ id_pub2_out }}\n{{ id_priv1_out }}\n{{ id_priv2_out }}\n{{ id_nat_gw_out }}\n{{ id_pub_rt_out }}\n{{ id_priv_rt_out }}\n{{ id_igw_out }}"
+        content: "vpcout: {{ vpcout.id }}\npub1_out: {{ pub1_out.subnet.id }}\npub2_out: {{ pub2_out.subnet.id }}\npriv1_out: {{ priv1_out.subnet.id }}\npriv2_out: {{ priv2_out.subnet.id }}\nnat_gw_out: {{ nat_gw_out.nat_gateway_id }}\npub_rt_out: {{ pub_rt_out.id }}\npub_rt_out: {{ pub_rt_out.id }}\npriv_rt_out: {{ priv_rt_out.id }}\nigw_out: {{ igw_out.gateway_id }}"
         dest: vars/vpc_variables
-          
+      

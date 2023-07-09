@@ -49,4 +49,5 @@
         count: 1
         instance_tags:
           Name: "{{ bastion_name }}"
+        if_exist_do_not_create: true
       register: bastion_instance

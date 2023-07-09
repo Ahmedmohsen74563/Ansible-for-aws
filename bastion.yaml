@@ -18,5 +18,34 @@
         content: "{{ key_pair.private_key }}"
         dest: "./bastion-keypair.pem"
         mode: "0600"
-    - name: Create bastion Security Group
+      when: key_pair.changed
+
+    - name: Create security group for instance
+      ec2_group:
+        name: "{{ sg_name }}"
+        vpc_id: "{{ vpcout }}"
+        region: "{{ region }}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+      register: sg_out
+
+    - name: Display security group ID
+      debug:
+        var: sg_out.group_id
       
+    - name: Provision a new bastion host instance
+      ec2:
+        key_name: "{{ key_name }}"
+        instance_type: "{{ instance_type }}"
+        image: "{{ bastion_ami }}"
+        region: "{{ region }}"
+        vpc_subnet_id: "{{ pub1_out }}"
+        assign_public_ip: yes
+        group_id: "{{ sg_out.group_id }}"
+        count: 1
+        instance_tags:
+          Name: "{{ bastion_name }}"
+      register: bastion_instance

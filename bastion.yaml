@@ -6,6 +6,7 @@
     - vars/vpc_setup
     - vpc_setup.yaml
     - vars/Bastion_setup
+
   tasks:
     - name: Create Key Pair
       ec2_key:
@@ -36,7 +37,7 @@
     - name: Display security group ID
       debug:
         var: sg_out.group_id
-      
+
     - name: Provision a new bastion host instance
       ec2:
         key_name: "{{ key_name }}"
@@ -51,3 +52,19 @@
           Name: "{{ bastion_name }}"
         if_exist_do_not_create: true
       register: bastion_instance
+
+    - name: Wait for SSH to come up on instance
+      wait_for:
+        host: "{{ bastion_instance.instances[0].public_ip }}"
+        port: 22
+        delay: 5
+        timeout: 500
+
+    - name: Add bastion host to known hosts
+      known_hosts:
+        name: "{{ bastion_instance.instances[0].public_ip }}"
+        key: "{{ hostvars['localhost']['key_pair']['key']['public_key'] }}"
+
+    - name: Display public IP address of bastion host
+      debug:
+        var: bastion_instance.instances[0].public_ip

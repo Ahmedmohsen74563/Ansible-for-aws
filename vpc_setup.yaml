@@ -122,14 +122,14 @@
         - igw_out.gateway_id
 
     - set_fact:
-        vpcout: "{{vpcout.vpc.id}}"
-        pub1_out: "{{ pub1_out.subnet.id }}"
-        pub2_out: "{{ pub2_out.subnet.id }}"
-        priv1_out: "{{ priv1_out.subnet.id }}"
-        priv2_out: "{{ priv2_out.subnet.id}}"
-        igwid: "{{ igw_out.gateway_id}}"
-        pub_rt_out: "{{pub_rt_out.id}}"
-        nat_gw_out: "{{ nat_gw_out.nat_gateway_id}}"
-        priv_rt_out: "{{priv_rt_out.id}}"
+        vpc: "{{ vpcout.vpc }}"
+        pub1_subnet: "{{ pub1_out.subnet }}"
+        pub2_subnet: "{{ pub2_out.subnet }}"
+        priv1_subnet: "{{ priv1_out.subnet }}"
+        priv2_subnet: "{{ priv2_out.subnet }}"
+        igw_id: "{{ igw_out.gateway_id }}"
+        nat_gw: "{{ nat_gw_out }}"
+        pub_rt: "{{ pub_rt_out.route_table }}"
+        priv_rt: "{{ priv_rt_out.route_table }}"
         cacheable: yes
 

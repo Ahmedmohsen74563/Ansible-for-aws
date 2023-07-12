@@ -4,7 +4,7 @@
 
   vars_files:
     - vars/vpc_setup
-    - vpc_setup
+    - vpc_setup.yaml
     - vars/Bastion_setup
   tasks:
     - name: Create Key Pair

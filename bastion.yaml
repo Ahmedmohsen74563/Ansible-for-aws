@@ -24,7 +24,7 @@
       ec2_group:
         name: "{{ sg_name }}"
         description: "{{ sg_description }}"
-        vpc_id: "{{ vpcout }}"
+        vpc_id: "{{ vpc }}"
         region: "{{ region }}"
         rules:
           - proto: tcp
@@ -43,7 +43,7 @@
         instance_type: "{{ instance_type }}"
         image: "{{ bastion_ami }}"
         region: "{{ region }}"
-        vpc_subnet_id: "{{ pub1_out }}"
+        vpc_subnet_id: "{{pub1_subnet}}"
         assign_public_ip: yes
         group_id: "{{ sg_out.group_id }}"
         count: 1

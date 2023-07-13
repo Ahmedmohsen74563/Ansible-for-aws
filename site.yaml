@@ -1,3 +1,0 @@
---- 
-- import_playbook: vpc_setup.yaml
-- import_playbook: bastion.yaml
